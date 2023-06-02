@@ -12,6 +12,15 @@ param(
     [string]$datalog = "C"
 )
 
+### Create C:\Temp if not already present
+if (-not(Test-Path -Path C:\Temp)){
+    try {
+        New-Item -Path 'C:\Temp' -ItemType Directory
+    }
+    catch {
+        throw $_.Exception.Message
+    }
+}
 
 ### Download and unpack DISKSPD if necessary
 if (-not(Test-Path -Path $env:USERPROFILE\Downloads\DISKSPD\amd64\diskspd.exe -PathType Leaf)) {
