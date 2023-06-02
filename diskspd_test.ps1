@@ -47,9 +47,9 @@ Remove-Item C:\Temp\*_results.txt
 
 ### Test #1: MSSQL OLTP Workload
 # oltpw30
-& $diskspd -D -L -d600 -W300 -Sh -b8K -r -w30 -t8 -o32 -Z1M -c64D "$($datalog):\oltpio.dat" > "C:\Temp\oltpw30_results.txt"
+& $diskspd -D -L -d600 -W300 -Sh -b8K -r -w30 -t8 -o32 -Z1M -c64G "$($datalog):\oltpio.dat" > "C:\Temp\oltpw30_results.txt"
 # oltpw70
-& $diskspd -D -L -d600 -W300 -Sh -b8K -r -w70 -t8 -o32 -Z1M -c64D "$($datalog):\oltpio.dat" > "C:\Temp\oltpw70_results.txt"
+& $diskspd -D -L -d600 -W300 -Sh -b8K -r -w70 -t8 -o32 -Z1M -c64G "$($datalog):\oltpio.dat" > "C:\Temp\oltpw70_results.txt"
 
 ### Test #2: MSSQL Logfile Workload
 & $diskspd -D -L -d600 -W300 -Sh -b60K -s -w100 -t1 -o32 -Z1M -c1G "$($datalog):\logio.dat" > "C:\Temp\logw_results).txt"
