@@ -18,7 +18,7 @@ if (-not(Test-Path -Path $env:USERPROFILE\Downloads\DISKSPD\amd64\diskspd.exe -P
     try {
         $client = New-Object System.Net.WebClient
         $client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.1/DiskSpd.zip","$env:USERPROFILE\Downloads\DiskSpd-2.1.zip")
-        Expand-Archive -LiteralPath C:\Users\jones\Downloads\DiskSpd-2.1.zip -DestinationPath $env:USERPROFILE\Downloads\DISKSPD
+        Expand-Archive -Path $env:USERPROFILE\Downloads\DiskSpd-2.1.zip -DestinationPath $env:USERPROFILE\Downloads\DISKSPD
     }
     catch {
         throw $_.Exception.Message
