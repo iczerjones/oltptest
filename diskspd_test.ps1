@@ -58,7 +58,7 @@ Write-Host "Test complete"
 
 ### Test #2: MSSQL Logfile Workload
 Write-Host "Starting log buffer flush simulation"
-& $diskspd -D -L -d600 -W300 -Sh -b60K -s -w100 -t1 -o32 -Z1M -c1G "$($datalog):\logio.dat" > "C:\Temp\logw_results).txt"
+& $diskspd -D -L -d600 -W300 -Sh -b60K -s -w100 -t1 -o32 -Z1M -c1G "$($datalog):\logio.dat" > "C:\Temp\logw_results.txt"
 Write-Host "Test complete"
 
 ### Test #3: MSSQL Read-ahead Workload
