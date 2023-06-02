@@ -47,16 +47,27 @@ Remove-Item C:\Temp\*_results.txt
 
 ### Test #1: MSSQL OLTP Workload
 # oltpw30
+Write-Host "Starting OLTP workload, 30% write / 70% read"
 & $diskspd -D -L -d600 -W300 -Sh -b8K -r -w30 -t8 -o32 -Z1M -c64G "$($datalog):\oltpio.dat" > "C:\Temp\oltpw30_results.txt"
+Write-Host "Test complete"
+
 # oltpw70
+Write-Host "Starting OLTP workload, 70% write / 30% read"
 & $diskspd -D -L -d600 -W300 -Sh -b8K -r -w70 -t8 -o32 -Z1M -c64G "$($datalog):\oltpio.dat" > "C:\Temp\oltpw70_results.txt"
+Write-Host "Test complete"
 
 ### Test #2: MSSQL Logfile Workload
+Write-Host "Starting log buffer flush simulation"
 & $diskspd -D -L -d600 -W300 -Sh -b60K -s -w100 -t1 -o32 -Z1M -c1G "$($datalog):\logio.dat" > "C:\Temp\logw_results).txt"
+Write-Host "Test complete"
 
 ### Test #3: MSSQL Read-ahead Workload
+Write-Host "Starting continuous page read test"
 & $diskspd -D -L -d600 -W300 -Sh -b512K -s -w0 -t1 -o32 -Z1M -c1G "$($datalog):\readaheadio.dat" > "C:\Temp\readahead_results.txt"
+Write-Host "Test complete"
 
+Write-Host "All tests complete.  Archiving results and cleaning up"
+Write-Host "Results can be found on the desktop"
 ### Zip up results and place on the desktop
 $dtpath = [Environment]::GetFolderPath("Desktop")
 Compress-Archive -Path C:\Temp\*_results.txt -DestinationPath "$($dtpath)\results_$($logsuffix).zip"
